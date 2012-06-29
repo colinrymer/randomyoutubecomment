@@ -21,5 +21,6 @@ get '/' do
   while comment.nil?
     comment = client.comments(videos.sample.video_id.split(":").last).sample
   end
-  comment.content
+  @comment = comment.content
+  erb :index
 end
