@@ -1,4 +1,4 @@
-%w(sinatra wordnik youtube_it yaml).each {|lib| require lib}
+%w(json sinatra wordnik youtube_it yaml).each {|lib| require lib}
 
 APP_CONFIG = YAML.load(File.open("./config/app_config.yml")) if FileTest.exists?("./config/app_config.yml")
 
@@ -27,5 +27,11 @@ get '/' do
   @videos = search_for_videos(random_word) while @videos.nil? || @videos.length < 1
   @comment_response = get_comment(@videos) while @comment_response.nil? || @comment_response.content.nil?
   @comment = @comment_response.content
-  erb :index
+
+  if request.accept[0] == "application/json"
+    content_type :json
+    { comment: @comment }.to_json
+  else
+    erb :index
+  end
 end
