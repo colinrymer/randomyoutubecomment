@@ -26,7 +26,7 @@ Make sure you are in the root directory of the application and that there is an 
 Then:
 
   1. `heroku create --stack cedar`
-  2. `heroku config:add WORDNIK_KEY='your_wordnik_api_key'
+  2. `heroku config:add WORDNIK_KEY='your_wordnik_api_key'`
   3. `git add .`
   4. `git commit -m 'preparing for heroku deployment'`
   5. `git push heroku master`
