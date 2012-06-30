@@ -1,9 +1,9 @@
-require 'sinatra'
-require 'youtube_it'
-%w(rubygems wordnik).each {|lib| require lib}
+%w(sinatra wordnik youtube_it yaml).each {|lib| require lib}
+
+APP_CONFIG = YAML.load(File.open("./config/app_config.yml")) if FileTest.exists?("./config/app_config.yml")
 
 Wordnik.configure do |config|
-    config.api_key = '2511533437086d533fd5103847108c1b84ca3abec199e412d'
+    config.api_key = ENV['WORDNIK_KEY'] || APP_CONFIG['wordnik_key']
 end
 
 def get_comment(videos)
