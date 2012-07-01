@@ -17,9 +17,15 @@ To install:
   3. Install the necessary gems: `bundle install`
 
 ## Usage ##
-`ruby web.rb`
+To run the application, execute `ruby web.rb`.
+
+Setting the 'Accept' header of a request to `application/json` will return a JSON object in the following format:
+
+    {"author":"Author Name","comment":"YouTube comment body","comment_id":"the_youtube_comment_id","title":"YouTube Comment Title","video_id":"youtube_video_id"}
 
 ## Setting it up on Heroku ##
+
+A `Procfile` has been included, so deployment to Heroku is as easy as creating a Heroku stack, setting the ENV[wordnik_key] variable on the new stack, and pushing the application to Heroku.
 
 If the Heroku gem hasn't been installed, install it: `gem install heroku`.
 
@@ -27,11 +33,11 @@ Make sure you are in the root directory of the application and that there is an 
 
 Then:
 
-  1. `heroku create --stack cedar`
-  2. `heroku config:add WORDNIK_KEY='your_wordnik_api_key'`
-  3. `git add .`
-  4. `git commit -m 'preparing for heroku deployment'`
-  5. `git push heroku master`
+  1.        `heroku create --stack cedar`
+  2.        `heroku config:add WORDNIK_KEY='your_wordnik_api_key'`
+  3.        `git add .` *- only necessary if the git repository was freshly initialized.*
+  4.        `git commit -m 'preparing for heroku deployment'`
+  5.        `git push heroku master`
   6. boom. navigate to the url provided by heroku and enjoy.
 
 ## Is it any good? ##

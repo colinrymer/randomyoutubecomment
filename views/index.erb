@@ -5,6 +5,10 @@
   <meta name="author" content="Colin Rymer" />
 </head>
 <body>
-<p><%= @comment %></p>
+<h1><%= @comment.title %></h1>
+<p><%= @comment.body %></p>
+<h2>Comment Metadata</h2>
+<p>Comment ID: <%= @comment.id %></p>
+<p>Video ID: <%= @comment.video_id %></p>
 </body>
 </html>
