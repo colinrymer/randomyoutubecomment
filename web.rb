@@ -8,8 +8,8 @@ end
 
 class Comment
   attr_accessor :id, :author, :body, :title, :video_id
-  
-  def initialize(client)
+
+  def initialize
     videos = search_for_videos(random_word) while videos.nil? || videos.length < 1
     while @comment.nil?
       video = videos.sample
@@ -40,7 +40,7 @@ end
 
 # Routes
 get '/' do
-  @comment = Comment.new client
+  @comment = Comment.new
   if request.accept[0] == "application/json"
     content_type :json
     { author: @comment.author, comment: @comment.body,
